@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire\Backend\Admin;
 
-use Livewire\Component;
 use App\Models\User;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Laravel\Jetstream\InteractsWithBanner;
 
 class Users extends Component
 {
     use WithPagination;
+    use InteractsWithBanner;
 
     public $modalFormVisible;
     public $modalConfirmDeleteVisible;
@@ -17,7 +19,7 @@ class Users extends Component
     /**
      * Put your custom public properties here!
      */
-    public $role;
+    public $email;
     public $name;
 
     /**
@@ -28,7 +30,7 @@ class Users extends Component
     public function rules()
     {
         return [
-            'role' => 'required',
+            'email' => 'required',
             'name' => 'required',
         ];
     }
@@ -42,7 +44,7 @@ class Users extends Component
     public function loadModel()
     {
         $data = User::find($this->modelId);
-        $this->role = $data->role;
+        $this->email = $data->email;
         $this->name = $data->name;
     }
 
@@ -55,7 +57,7 @@ class Users extends Component
     public function modelData()
     {
         return [
-            'role' => $this->role,
+            'email' => $this->email,
             'name' => $this->name,
         ];
     }
@@ -105,6 +107,7 @@ class Users extends Component
         User::destroy($this->modelId);
         $this->modalConfirmDeleteVisible = false;
         $this->resetPage();
+        $this->banner('Successfully Delete!');
     }
 
     /**
