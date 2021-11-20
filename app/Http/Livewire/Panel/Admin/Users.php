@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Admin;
+namespace App\Http\Livewire\Panel\Admin;
 
 use App\Models\User;
+use Laravel\Jetstream\InteractsWithBanner;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Laravel\Jetstream\InteractsWithBanner;
 
 class Users extends Component
 {
@@ -152,9 +152,9 @@ class Users extends Component
 
     public function render()
     {
-        return view('livewire.backend.admin.users', [
+        return view('livewire.panel.admin.users', [
             'data' => $this->read(),
         ]);
     }
 }
-// livewire.backend.admin.users
+// livewire.panel.admin.users

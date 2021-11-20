@@ -31,7 +31,7 @@ Route::group(['middleware' => [
     })->name('dashboard');
 
     Route::get('/users', function () {
-        return view('backend.admin.users');
+        return view('panel.admin.users');
     })->name('users');
 
 });
