@@ -31,7 +31,7 @@ Route::group(['middleware' => [
     })->name('dashboard');
 
     Route::get('/users', function () {
-        return view('livewire.backend.admin.users');
+        return view('backend.admin.users');
     })->name('users');
 
 });
