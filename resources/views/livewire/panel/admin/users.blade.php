@@ -1,113 +1,77 @@
-<div class="p-6">
-    <div class="flex items-center justify-end px-4 py-3 text-right sm:px-6">
-         <x-jet-button wire:click="createShowModal">
-            {{ __('Create User') }}
-        </x-jet-button>
-    </div>
 
+    <!-- Main content -->
+    <section class="content">
 
-    {{-- The data table --}}
-    <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead>
-                            <tr>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
-
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @if ($data->count())
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td class="px-6 py-2">{{ $item->name }}</td>
-                                        <td class="px-6 py-2">{{ $item->email }}</td>
-
-                                        <td class="px-6 py-2 flex justify-end">
-                                            <x-jet-button wire:click="updateShowModal({{ $item->id }})">
-                                                {{ __('Update') }}
-                                            </x-jet-button>
-                                            <x-jet-danger-button class="ml-2" wire:click="deleteShowModal({{ $item->id }})">
-                                                {{ __('Delete') }}
-                                            </x-jet-button>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+      <div class="row">
+        <div class="col-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h4 class="box-title">User Table</h4>
+              <div class="box-controls pull-right">
+                <div class="lookup lookup-circle lookup-right">
+                  <input type="text" name="s">
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <tr>
+                      <th>Invoice</th>
+                      <th>User</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Country</th>
+                    </tr>
+                    <tr>
+                      <td><a href="javascript:void(0)">Order #123456</a></td>
+                      <td>Lorem Ipsum</td>
+                      <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                      <td>$158.00</td>
+                      <td><span class="badge badge-pill badge-danger">Pending</span></td>
+                      <td>CH</td>
+                    </tr>
+                    <tr>
+                      <td><a href="javascript:void(0)">Order #458789</a></td>
+                      <td>Lorem Ipsum</td>
+                      <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                      <td>$55.00</td>
+                      <td><span class="badge badge-pill badge-warning">Shipped</span></td>
+                      <td>US</td>
+                    </tr>
+                    <tr>
+                      <td><a href="javascript:void(0)">Order #84532</a></td>
+                      <td>Lorem Ipsum</td>
+                      <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                      <td>$845.00</td>
+                      <td><span class="badge badge-pill badge-danger">Prossing</span></td>
+                      <td>IG</td>
+                    </tr>
+                    <tr>
+                      <td><a href="javascript:void(0)">Order #48956</a></td>
+                      <td>Lorem Ipsum</td>
+                      <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                      <td>$145.00</td>
+                      <td><span class="badge badge-pill badge-success">Paid</span></td>
+                      <td>EN</td>
+                    </tr>
+                    <tr>
+                      <td><a href="javascript:void(0)">Order #92154</a></td>
+                      <td>Lorem Ipsum</td>
+                      <td><span class="text-muted"><i class="fa fa-clock-o"></i> Oct 16, 2017</span> </td>
+                      <td>$450.00</td>
+                      <td><span class="badge badge-pill badge-warning">Shipped</span></td>
+                      <td>UK</td>
+                    </tr>
+                  </table>
                 </div>
             </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
-    </div>
+      </div><!-- /.row -->
 
-    <div class="mt-5">
-    {{ $data->links() }}
-    </div>
-
-    {{-- Modal Form --}}
-    <x-jet-dialog-modal wire:model="modalFormVisible">
-        <x-slot name="title">
-            {{ __('Create or Update Form') }}
-        </x-slot>
-
-        <x-slot name="content">
-            <div class="mt-4">
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input wire:model="name" id="" class="block mt-1 w-full" type="text" />
-                @error('name') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('E-Mail') }}" />
-                <x-jet-input wire:model="email" id="" class="block mt-1 w-full" type="text" />
-                @error('email') <span class="error">{{ $message }}</span> @enderror
-            </div>
-
-        </x-slot>
-
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
-                {{ __('Nevermind') }}
-            </x-jet-secondary-button>
-
-            @if ($modelId)
-                <x-jet-button class="ml-2" wire:click="update" wire:loading.attr="disabled">
-                    {{ __('Update') }}
-                </x-jet-danger-button>
-            @else
-                <x-jet-button class="ml-2" wire:click="create" wire:loading.attr="disabled">
-                    {{ __('Create') }}
-                </x-jet-danger-button>
-            @endif
-        </x-slot>
-    </x-jet-dialog-modal>
-
-    {{-- The Delete Modal --}}
-    <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
-        <x-slot name="title">
-            {{ __('Delete User') }}
-        </x-slot>
-
-        <x-slot name="content">
-            {{ __('Are you sure you want to delete this User?')}}
-        </x-slot>
-
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
-                {{ __('Nevermind') }}
-            </x-jet-secondary-button>
-
-            <x-jet-danger-button class="ml-2" wire:click="delete" wire:loading.attr="disabled">
-                {{ __('Delete') }}
-            </x-jet-danger-button>
-        </x-slot>
-    </x-jet-dialog-modal>
-</div>
+    </section><!-- /.content -->

@@ -1,15 +1,23 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('User list') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @livewire('panel.admin.users')
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">{{ __('User list') }}</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Tables</li>
+                                <li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </x-slot>
+
+                @livewire('panel.admin.users')
+
 </x-app-layout>
