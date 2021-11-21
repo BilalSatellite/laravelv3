@@ -6,7 +6,7 @@ $classes = ($active ?? false)
             : 'nav-link';
 @endphp
 
-<li class="nav-item">
+<li class="nav-item" {{ $attributes->merge(['class' => $classes]) }}>
     <a {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </a>

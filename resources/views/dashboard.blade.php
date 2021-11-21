@@ -3,7 +3,6 @@
         <div class="content-header">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <x-jet-application-logo style="width: 80px;" />
                     <h3 class="page-title">{{ __('Dashboard') }}</h3>
                     <div class="d-inline-block align-items-center">
                         <nav>
