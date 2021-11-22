@@ -14,9 +14,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('panel/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/css/skin_color.css') }}">
     <link rel="stylesheet" href="{{ asset('panel/css/color_theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('panel/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('panel/css/animate.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
     @livewireStyles
