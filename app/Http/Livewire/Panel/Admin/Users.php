@@ -5,7 +5,9 @@ namespace App\Http\Livewire\Panel\Admin;
 use App\Models\User;
 use Laravel\Jetstream\InteractsWithBanner;
 use Livewire\Component;
+use Livewire\Livewire;
 use Livewire\WithPagination;
+
 
 class Users extends Component
 {
@@ -21,7 +23,10 @@ class Users extends Component
      */
     public $email;
     public $name;
-
+    // public function mount()
+    // {
+    //     $this->data = User::paginate(10);
+    // }
     /**
      * The validation rules
      *
@@ -152,9 +157,10 @@ class Users extends Component
 
     public function render()
     {
-        return view('livewire.panel.admin.users', [
+        return view('livewire.panel.admin.users',[
             'data' => $this->read(),
         ]);
+
     }
 }
 // livewire.panel.admin.users

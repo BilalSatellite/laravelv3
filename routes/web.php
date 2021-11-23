@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Panel\Admin\Users;
+use App\Http\Livewire\Panel\User\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +33,10 @@ Route::group(['middleware' => [
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/users', function () {
-        return view('panel.admin.users');
-    })->name('users');
+
+
+    Route::get('/users', Users::class)->name('users');
 
 });
+
+

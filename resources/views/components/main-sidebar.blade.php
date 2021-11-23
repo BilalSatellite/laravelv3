@@ -23,13 +23,6 @@
                 <span>{{ __('Dashboard') }}</span>
             </x-jet-nav-link>
 
-            <li>
-                <a href="/dashboard">
-                    <i class="bi-alarm" style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-
             <x-jet-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                 <i class="bi bi-person" style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
                 <span>{{ __('Profile') }}</span>
